@@ -16,12 +16,12 @@ const FormBasico = () => {
   };
 
   /**
-   * Esta función maneja el envío del formulario. 
+   * Esta función maneja el envío del formulario.
    */
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Formulario enviado:', form);
+    console.log('Formulario BÁSICO enviado:', form);
 
     setForm({ nombre: '', email: '', aceptar: false });
   };
