@@ -1,4 +1,3 @@
-import { use } from 'react';
 import { useForm } from 'react-hook-form';
 
 const FormReactHookForm = () => {
@@ -16,7 +15,7 @@ const FormReactHookForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log('Formulario FORMIK enviado:', data);
+    console.log('Formulario RHF enviado:', data);
     reset(); // Resetear formulario
   };
 
