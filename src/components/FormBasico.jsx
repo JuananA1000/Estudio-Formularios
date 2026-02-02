@@ -18,12 +18,22 @@ const FormBasico = () => {
   /**
    * Esta función maneja el envío del formulario.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('Formulario BÁSICO enviado:', form);
+    const respuesta = await fetch(`https://api.genderize.io?name=${form.nombre}`);
+    const data = await respuesta.json();
 
-    setForm({ nombre: '', email: '', aceptar: false });
+    if (data.gender === 'female') {
+      console.log(`¡Bienvenida ${form.nombre}!`);
+    } else if (data.gender === 'male') {
+      console.log(`¡Bienvenido ${form.nombre}!`);
+    } else {
+      console.log(`¡Bienvenide, RARITO! Te llamabas ${form.nombre} no?`);
+    }
+
+    console.log('Formulario BÁSICO enviado:', form, data);
+    setForm({ nombre: '', email: '', aceptar: false }); // Reiniciar el formulario
   };
 
   return (
