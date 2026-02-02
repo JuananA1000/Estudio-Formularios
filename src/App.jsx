@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import FormBasico from './components/FormBasico';
+import FormReactHookForm from './components/FormReactHookForm';
 import FormFormik from './components/FormFormik';
 
 import './App.css';
@@ -12,7 +13,7 @@ function App() {
       case 'form-basico':
         return <FormBasico />;
       case 'form-hook-form':
-        return <>Formulario React Hook Form</>;
+        return <FormReactHookForm />;
       case 'formik':
         return <FormFormik />;
       default:

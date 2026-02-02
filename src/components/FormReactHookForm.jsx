@@ -1,7 +1,7 @@
-const FormFormik = () => {
+const FormReactHookForm = () => {
   return (
     <div>
-      <h2>Formulario con Formik</h2>
+      <h2>Formulario con React Hook Form</h2>
 
       <form action=''>
         <div
@@ -26,11 +26,11 @@ const FormFormik = () => {
             <label htmlFor='accept'>Aceptar términos:</label>
             <input type='checkbox' id='accept' name='accept' />
           </div>
-          <input type='submit' value='Enviar' />
+           <input type='submit' value='Enviar' />
         </div>
       </form>
     </div>
   );
 };
 
-export default FormFormik;
+export default FormReactHookForm;
