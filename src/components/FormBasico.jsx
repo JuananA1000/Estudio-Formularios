@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import './style.css';
+
 const FormBasico = () => {
   const [form, setForm] = useState({ nombre: '', email: '', aceptar: false });
 
@@ -40,31 +42,25 @@ const FormBasico = () => {
     <div>
       <h2>Formulario Básico</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-            marginTop: '20px',
-            alignItems: 'flex-start',
-          }}>
-          <div style={{ display: 'flex' }}>
-            <label htmlFor='nombre'>Nombre:</label>
-            <input type='text' id='nombre' name='nombre' value={form.nombre} onChange={handleChange} />
-          </div>
-
-          <div style={{ display: 'flex' }}>
-            <label htmlFor='email'>Email:</label>
-            <input type='text' id='email' name='email' value={form.email} onChange={handleChange} />
-          </div>
-
-          <div style={{ display: 'flex' }}>
-            <label htmlFor='aceptar'>Aceptar términos:</label>
-            <input type='checkbox' id='aceptar' name='aceptar' checked={form.aceptar} onChange={handleChange} />
-          </div>
-          <input type='submit' value='Enviar' />
+      <form onSubmit={handleSubmit} className='form'>
+        <div className='form-group'>
+          <label htmlFor='nombre'>Nombre</label>
+          <input type='text' id='nombre' name='nombre' value={form.nombre} onChange={handleChange} />
         </div>
+
+        <div className='form-group'>
+          <label htmlFor='email'>Email</label>
+          <input type='email' id='email' name='email' value={form.email} onChange={handleChange} />
+        </div>
+
+        <div className='form-group checkbox'>
+          <input type='checkbox' id='aceptar' name='aceptar' checked={form.aceptar} onChange={handleChange} />
+          <label htmlFor='aceptar'>Aceptar términos</label>
+        </div>
+
+        <button type='submit' className='btn-submit'>
+          Enviar
+        </button>
       </form>
     </div>
   );
