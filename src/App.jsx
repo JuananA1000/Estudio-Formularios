@@ -6,26 +6,12 @@ import FormFormik from './components/FormFormik';
 import './App.css';
 
 function App() {
-  const [route, setRoute] = useState('home');
   const [path, setPath] = useState(window.location.pathname);
 
   const goTo = (path) => {
     window.history.pushState({}, '', path);
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
-
-  // const renderComponent = () => {
-  //   switch (path) {
-  //     case 'form-basico':
-  //       return <FormBasico />;
-  //     case 'form-hook-form':
-  //       return <FormReactHookForm />;
-  //     case 'formik':
-  //       return <FormFormik />;
-  //     default:
-  //       return null;
-  //   }
-  // };
 
   useEffect(() => {
     const onLocationChange = () => {
@@ -41,17 +27,35 @@ function App() {
 
   return (
     <>
-      <h1>Estudio Básico de Formularios</h1>
-      <button onClick={() => goTo('/form-basico')}>Formulario Básico</button>
-      <button onClick={() => goTo('/form-hook-form')}>Formulario React Hook Form</button>
-      <button onClick={() => goTo('/formik')}>Formulario Formik</button>
-      <button onClick={() => goTo('/')}>Home</button>
+      {path === '/' && (
+        <>
+          <h1>Estudio de Formularios</h1>
+          <button onClick={() => goTo('/form-basico')}>Formulario Básico</button>
+          <button onClick={() => goTo('/form-hook-form')}>Formulario React Hook Form</button>
+          <button onClick={() => goTo('/formik')}>Formulario Formik</button>
+        </>
+      )}
 
-      {/* {renderComponent()} */}
+      {path === '/form-basico' && (
+        <>
+          <FormBasico />
+          <button onClick={() => goTo('/')}>Volver</button>
+        </>
+      )}
 
-        {path === "/form-basico" && <FormBasico />}
-      {path === "/form-hook-form" && <FormReactHookForm />}
-      {path === "/formik" && <FormFormik />}
+      {path === '/form-hook-form' && (
+        <>
+          <FormReactHookForm />
+          <button onClick={() => goTo('/')}>Volver</button>
+        </>
+      )}
+
+      {path === '/formik' && (
+        <>
+          <FormFormik />
+          <button onClick={() => goTo('/')}>Volver</button>
+        </>
+      )}
     </>
   );
 }
