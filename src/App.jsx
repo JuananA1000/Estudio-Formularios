@@ -4,6 +4,7 @@ import FormReactHookForm from './components/FormReactHookForm';
 import FormFormik from './components/FormFormik';
 
 import './App.css';
+import './components/style.css';
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -26,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className={`${path === '/' ? 'form-home' : 'form'}`}>
       {path === '/' && (
         <>
           <h1>Estudio de Formularios</h1>
@@ -39,24 +40,24 @@ function App() {
       {path === '/form-basico' && (
         <>
           <FormBasico />
-          <button onClick={() => goTo('/')}>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
         </>
       )}
 
       {path === '/form-hook-form' && (
         <>
           <FormReactHookForm />
-          <button onClick={() => goTo('/')}>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
         </>
       )}
 
       {path === '/formik' && (
         <>
           <FormFormik />
-          <button onClick={() => goTo('/')}>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
         </>
       )}
-    </>
+    </div>
   );
 }
 

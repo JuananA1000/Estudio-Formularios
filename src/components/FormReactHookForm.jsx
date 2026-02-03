@@ -25,7 +25,7 @@ const FormReactHookForm = () => {
     <div>
       <h2>Formulario con React Hook Form</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className='form'>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre</label>
           <input type='text' id='nombre' name='nombre' {...register('nombre')} />

@@ -42,7 +42,7 @@ const FormBasico = () => {
     <div>
       <h2>Formulario Básico</h2>
 
-      <form onSubmit={handleSubmit} className='form'>
+      <form onSubmit={handleSubmit} >
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre</label>
           <input type='text' id='nombre' name='nombre' value={form.nombre} onChange={handleChange} />

@@ -20,7 +20,7 @@ const FormFormik = () => {
       <h2>Formulario con Formik</h2>
 
       {/* La función handleSubmit ya viene incluida en el paquete formik */}
-      <form onSubmit={formik.handleSubmit} className='form'>
+      <form onSubmit={formik.handleSubmit}>
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre:</label>
           <input type='text' id='nombre' name='nombre' value={formik.values.nombre} onChange={formik.handleChange} />
