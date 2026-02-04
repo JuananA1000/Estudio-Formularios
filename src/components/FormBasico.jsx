@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { getSaludo } from '../api/getSaludo';
 
 import './style.css';
 
 const FormBasico = () => {
   const [form, setForm] = useState({ nombre: '', email: '', aceptar: false });
+  const [saludoPath, setSaludoPath] = useState('');
 
   /**
    * Es una función genérica que actualiza el estado del formulario cada vez que se escribe o marca el checkbox.
@@ -22,18 +24,7 @@ const FormBasico = () => {
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const respuesta = await fetch(`https://api.genderize.io?name=${form.nombre}`);
-    const data = await respuesta.json();
-
-    if (data.gender === 'female') {
-      console.log(`¡Bienvenida ${form.nombre}!`);
-    } else if (data.gender === 'male') {
-      console.log(`¡Bienvenido ${form.nombre}!`);
-    } else {
-      console.log(`¡Bienvenide, RARITO! Te llamabas ${form.nombre} no?`);
-    }
-
+    const data = await getSaludo(form.nombre);
     console.log('Formulario BÁSICO enviado:', form, data);
     setForm({ nombre: '', email: '', aceptar: false }); // Reiniciar el formulario
   };

@@ -3,6 +3,8 @@ import FormBasico from './components/FormBasico';
 import FormReactHookForm from './components/FormReactHookForm';
 import FormFormik from './components/FormFormik';
 
+import { getSaludo } from './api/getSaludo';
+
 import './App.css';
 import './components/style.css';
 
