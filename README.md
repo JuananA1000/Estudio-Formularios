@@ -1,16 +1,57 @@
-# React + Vite
+# Estudio de Formularios en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En este proyecto creado con React estudiaremos y compararemos distintas formas de creación de formularios.
+El enfoque principal es entender cómo cambia la experiencia de desarrollo al utilizar librerías especializadas frente a una implementación manual, sin dependencias externas.
 
-Currently, two official plugins are available:
+## Objetivo del proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Se trata de un ejercicio práctico para:
 
-## React Compiler
+- Comprender los conceptos básicos detrás de la gestión de formularios.
+- Comparar la utilidad y escalabilidad de distintas herramientas.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Enfoques estudiados
 
-## Expanding the ESLint configuration
+Implementaremos el mismo formulario utilizando **tres enfoques diferentes**:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Formularios sin librerías externas
+
+Implementación manual utilizando únicamente `useState()` y los eventos `onChange` y `onSubmit`.
+Esto permite entender cómo funciona React "por debajo".
+
+### 2. React Hook Form
+
+Uso de la librería React Hook Form, centrada en:
+
+- Formularios no controlados
+- Mejor rendimiento
+- Menor cantidad de código repetitivo
+
+Es una solución moderna y muy utilizada en proyectos reales.
+
+### 3. Formik
+
+Uso de Formik, una librería más clásica y ampliamente conocida, que ofrece:
+
+- Gestión explícita del estado del formulario
+- Validaciones estructuradas
+- Buen soporte para formularios complejos
+
+Permite comparar un enfoque más declarativo frente a React Hook Form.
+
+## Comparación y aprendizajes
+
+A lo largo del proyecto se pueden observar diferencias claras entre los enfoques, especialmente en:
+
+- Cantidad de código necesario
+- Claridad y legibilidad
+- Facilidad para añadir validaciones
+- Mantenimiento a largo plazo
+
+Este estudio ayuda a tomar mejores decisiones técnicas según el tipo de proyecto y complejidad.
+
+## Conclusión
+
+La elección de una herramienta u otra depende del contexto del proyecto, su tamaño y las necesidades del equipo.
+
+Este repositorio sirve como referencia práctica para entender las ventajas y desventajas de cada enfoque.
