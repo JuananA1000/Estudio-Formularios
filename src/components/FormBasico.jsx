@@ -20,24 +20,25 @@ const FormBasico = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const saludo = await getSaludo(form.nombre);
-    console.log('Formulario BÁSICO enviado:', form);
-
+    
     /**
      * Utilizamos sessionStorage aquí para compartir datos entre rutas. El saludo se genera en FormBasico, pero
      * necesita mostrarse en /saludo. sessionStorage permite pasar datos sin props o estado global
-     */
-    try {
-      sessionStorage.setItem('saludo', saludo);
+    */
+   try {
+     sessionStorage.setItem('saludo', saludo);
     } catch (err) {
       console.warn('No se pudo guardar el saludo en sessionStorage', err);
     }
-
-    // Reiniciar el formulario
-    setForm({ nombre: '', email: '', aceptar: false });
-
+    
     // Navegar a la ruta /saludo
     window.history.pushState({}, '', '/saludo');
     window.dispatchEvent(new PopStateEvent('popstate'));
+    
+    // Reiniciar el formulario
+    setForm({ nombre: '', email: '', aceptar: false });
+    
+    console.log('Formulario BÁSICO enviado:', form);
   };
 
   return (

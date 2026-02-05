@@ -19,12 +19,20 @@ const FormReactHookForm = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log('Formulario RHF enviado:', data);
     const saludo = await getSaludo(data.nombre);
-
-    console.log(saludo);
-
+    
+    try {
+      sessionStorage.setItem('saludo', saludo);
+    } catch (error) {
+      console.warn('No se pudo guardar el saludo en sessionStorage', error);
+    }
+    
+    window.history.pushState({}, '', '/saludo');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    
     reset(); // Resetear formulario
+    
+    console.log('Formulario RHF enviado:', data);
   };
 
   return (
