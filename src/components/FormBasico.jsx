@@ -24,8 +24,11 @@ const FormBasico = () => {
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await getSaludo(form.nombre);
-    console.log('Formulario BÁSICO enviado:', form, data);
+    const saludo = await getSaludo(form.nombre);
+    console.log('Formulario BÁSICO enviado:', form);
+
+    // Este data se mostrará en una página distinta
+    console.log(saludo);
     setForm({ nombre: '', email: '', aceptar: false }); // Reiniciar el formulario
   };
 
@@ -33,7 +36,7 @@ const FormBasico = () => {
     <div>
       <h2>Formulario Básico</h2>
 
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre</label>
           <input type='text' id='nombre' name='nombre' value={form.nombre} onChange={handleChange} />

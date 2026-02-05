@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
 
+import { getSaludo } from '../api/getSaludo';
+
 import './style.css';
 
 const FormFormik = () => {
@@ -10,8 +12,13 @@ const FormFormik = () => {
       accept: false,
     },
 
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      const saludo = await getSaludo(values.nombre);
+      
       console.log('Formulario FORMIK enviado:', values);
+      console.log(saludo);
+
+      formik.resetForm(); // Resetear formulario
     },
   });
 

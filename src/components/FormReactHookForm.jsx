@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 
+import { getSaludo } from '../api/getSaludo';
+
 import './style.css';
 
 const FormReactHookForm = () => {
@@ -16,8 +18,12 @@ const FormReactHookForm = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log('Formulario RHF enviado:', data);
+    const saludo = await getSaludo(data.nombre);
+
+    console.log(saludo);
+
     reset(); // Resetear formulario
   };
 
