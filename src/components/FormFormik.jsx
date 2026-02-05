@@ -14,11 +14,18 @@ const FormFormik = () => {
 
     onSubmit: async (values) => {
       const saludo = await getSaludo(values.nombre);
-      
-      console.log('Formulario FORMIK enviado:', values);
-      console.log(saludo);
+
+      try {
+        sessionStorage.setItem('saludo', saludo);
+      } catch (error) {
+        console.warn('No se pudo guardar el saludo en sessionStorage', error);
+      }
+      window.history.pushState({}, '', '/saludo');
+      window.dispatchEvent(new PopStateEvent('popstate'));
 
       formik.resetForm(); // Resetear formulario
+
+      console.log('Formulario FORMIK enviado:', values);
     },
   });
 
