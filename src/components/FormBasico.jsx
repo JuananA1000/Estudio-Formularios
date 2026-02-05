@@ -5,11 +5,8 @@ import './style.css';
 
 const FormBasico = () => {
   const [form, setForm] = useState({ nombre: '', email: '', aceptar: false });
-  const [saludoPath, setSaludoPath] = useState('');
 
-  /**
-   * Es una función genérica que actualiza el estado del formulario cada vez que se escribe o marca el checkbox.
-   */
+  // Es una función genérica que actualiza el estado del formulario cada vez que se escribe o marca el checkbox.
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -19,17 +16,28 @@ const FormBasico = () => {
     }));
   };
 
-  /**
-   * Esta función maneja el envío del formulario.
-   */
+  // Esta función maneja el envío del formulario.
   const handleSubmit = async (e) => {
     e.preventDefault();
     const saludo = await getSaludo(form.nombre);
     console.log('Formulario BÁSICO enviado:', form);
 
-    // Este data se mostrará en una página distinta
-    console.log(saludo);
-    setForm({ nombre: '', email: '', aceptar: false }); // Reiniciar el formulario
+    /**
+     * Utilizamos sessionStorage aquí para compartir datos entre rutas. El saludo se genera en FormBasico, pero
+     * necesita mostrarse en /saludo. sessionStorage permite pasar datos sin props o estado global
+     */
+    try {
+      sessionStorage.setItem('saludo', saludo);
+    } catch (err) {
+      console.warn('No se pudo guardar el saludo en sessionStorage', err);
+    }
+
+    // Reiniciar el formulario
+    setForm({ nombre: '', email: '', aceptar: false });
+
+    // Navegar a la ruta /saludo
+    window.history.pushState({}, '', '/saludo');
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   return (

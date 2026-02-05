@@ -11,6 +11,8 @@ import './components/style.css';
 function App() {
   const [path, setPath] = useState(window.location.pathname);
 
+  const saludo = typeof window !== 'undefined' ? sessionStorage.getItem('saludo') || '' : '';
+
   const goTo = (path) => {
     window.history.pushState({}, '', path);
     window.dispatchEvent(new PopStateEvent('popstate'));
@@ -29,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className={`${path === '/' ? 'form-home' : 'form'}`}>
+    <div className={`${path === '/' ? 'form-home' : path === '/saludo' ? 'saludo-page' : 'form'}`}>
       {path === '/' && (
         <>
           <h1>Estudio de Formularios</h1>
@@ -42,6 +44,13 @@ function App() {
       {path === '/form-basico' && (
         <>
           <FormBasico />
+          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
+        </>
+      )}
+
+      {path === '/saludo' && (
+        <>
+          <h2>{saludo}</h2>
           <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
         </>
       )}

@@ -54,3 +54,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.saludo-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  flex-direction: column;
+}
+
+.saludo-page h2 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
