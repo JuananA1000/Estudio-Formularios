@@ -5,6 +5,7 @@ import './style.css';
 
 const FormBasico = () => {
   const [form, setForm] = useState({ nombre: '', email: '', aceptar: false });
+  const [error, setError] = useState(false);
 
   // Es una función genérica que actualiza el estado del formulario cada vez que se escribe o marca el checkbox.
   const handleChange = (e) => {
@@ -19,25 +20,30 @@ const FormBasico = () => {
   // Esta función maneja el envío del formulario.
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!form.nombre || !form.aceptar) {
+      setError(true);
+      return;
+    }
     const saludo = await getSaludo(form.nombre);
-    
+
     /**
      * Utilizamos sessionStorage aquí para compartir datos entre rutas. El saludo se genera en FormBasico, pero
      * necesita mostrarse en /saludo. sessionStorage permite pasar datos sin props o estado global
-    */
-   try {
-     sessionStorage.setItem('saludo', saludo);
+     */
+    try {
+      sessionStorage.setItem('saludo', saludo);
     } catch (err) {
       console.warn('No se pudo guardar el saludo en sessionStorage', err);
     }
-    
+
     // Navegar a la ruta /saludo
     window.history.pushState({}, '', '/saludo');
     window.dispatchEvent(new PopStateEvent('popstate'));
-    
+
     // Reiniciar el formulario
     setForm({ nombre: '', email: '', aceptar: false });
-    
+
     console.log('Formulario BÁSICO enviado:', form);
   };
 
@@ -49,6 +55,7 @@ const FormBasico = () => {
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre</label>
           <input type='text' id='nombre' name='nombre' value={form.nombre} onChange={handleChange} />
+          {error && !form.nombre && <span className='error'>El nombre es obligatorio</span>}
         </div>
 
         <div className='form-group'>
@@ -59,6 +66,7 @@ const FormBasico = () => {
         <div className='form-group checkbox'>
           <input type='checkbox' id='aceptar' name='aceptar' checked={form.aceptar} onChange={handleChange} />
           <label htmlFor='aceptar'>Aceptar términos</label>
+          {error && !form.aceptar && <span className='error'>Debes aceptar los términos</span>}
         </div>
 
         <button type='submit' className='btn-submit'>
