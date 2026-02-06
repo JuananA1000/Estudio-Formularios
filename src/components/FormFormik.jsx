@@ -12,6 +12,18 @@ const FormFormik = () => {
       accept: false,
     },
 
+    validate: (values) => {
+      const errors = {};
+
+      if (!values.nombre) {
+        errors.nombre = 'El nombre es obligatorio';
+      }
+      if (!values.accept) {
+        errors.accept = 'Debes aceptar los términos';
+      }
+      return errors;
+    },
+
     onSubmit: async (values) => {
       const saludo = await getSaludo(values.nombre);
 
@@ -38,6 +50,7 @@ const FormFormik = () => {
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre:</label>
           <input type='text' id='nombre' name='nombre' value={formik.values.nombre} onChange={formik.handleChange} />
+          {formik.errors.nombre && <span className='error'>{formik.errors.nombre}</span>}
         </div>
 
         <div style={{ display: 'flex' }} className='form-group'>
@@ -54,6 +67,7 @@ const FormFormik = () => {
             checked={formik.values.accept}
             onChange={formik.handleChange}
           />
+          {formik.errors.accept && <span className='error'>{formik.errors.accept}</span>}
         </div>
         <input type='submit' value='Enviar' className='btn-submit' />
       </form>
