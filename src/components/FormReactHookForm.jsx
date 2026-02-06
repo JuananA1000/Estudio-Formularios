@@ -20,18 +20,18 @@ const FormReactHookForm = () => {
 
   const onSubmit = async (data) => {
     const saludo = await getSaludo(data.nombre);
-    
+
     try {
       sessionStorage.setItem('saludo', saludo);
     } catch (error) {
       console.warn('No se pudo guardar el saludo en sessionStorage', error);
     }
-    
+
     window.history.pushState({}, '', '/saludo');
     window.dispatchEvent(new PopStateEvent('popstate'));
-    
+
     reset(); // Resetear formulario
-    
+
     console.log('Formulario RHF enviado:', data);
   };
 
@@ -42,7 +42,8 @@ const FormReactHookForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre</label>
-          <input type='text' id='nombre' name='nombre' {...register('nombre')} />
+          <input type='text' id='nombre' name='nombre' {...register('nombre', { required: true })} />
+          {errors.nombre && <span className='error'>El nombre es obligatorio</span>}
         </div>
 
         <div className='form-group'>
@@ -52,7 +53,8 @@ const FormReactHookForm = () => {
 
         <div className='form-group checkbox'>
           <label htmlFor='accept'>Aceptar términos:</label>
-          <input type='checkbox' id='accept' name='accept' {...register('accept')} />
+          <input type='checkbox' id='accept' name='accept' {...register('accept', { required: true })} />
+          {errors.accept && <span className='error'>Debes aceptar los términos</span>}
         </div>
 
         <input type='submit' value='Enviar' className='btn-submit' />
