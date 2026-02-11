@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-
 import { getSaludo } from '../api/getSaludo';
 
 import './style.css';

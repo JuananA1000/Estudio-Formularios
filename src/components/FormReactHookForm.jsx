@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-
 import { getSaludo } from '../api/getSaludo';
 
 import './style.css';

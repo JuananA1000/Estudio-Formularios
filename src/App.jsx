@@ -44,28 +44,36 @@ function App() {
       {path === '/form-basico' && (
         <>
           <FormBasico />
-          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>
+            Volver
+          </button>
         </>
       )}
 
       {path === '/saludo' && (
         <>
           <h2>{saludo}</h2>
-          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>
+            Volver
+          </button>
         </>
       )}
 
       {path === '/form-hook-form' && (
         <>
           <FormReactHookForm />
-          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>
+            Volver
+          </button>
         </>
       )}
 
       {path === '/formik' && (
         <>
           <FormFormik />
-          <button onClick={() => goTo('/')} className='btn-back'>Volver</button>
+          <button onClick={() => goTo('/')} className='btn-back'>
+            Volver
+          </button>
         </>
       )}
     </div>
