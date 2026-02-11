@@ -31,8 +31,6 @@ const FormReactHookForm = () => {
     window.dispatchEvent(new PopStateEvent('popstate'));
 
     reset(); // Resetear formulario
-
-    console.log('Formulario RHF enviado:', data);
   };
 
   return (

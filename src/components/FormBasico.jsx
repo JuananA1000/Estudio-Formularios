@@ -43,8 +43,6 @@ const FormBasico = () => {
 
     // Reiniciar el formulario
     setForm({ nombre: '', email: '', aceptar: false });
-
-    console.log('Formulario BÁSICO enviado:', form);
   };
 
   return (
