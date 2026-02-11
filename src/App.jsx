@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
+
 import FormBasico from './components/FormBasico';
 import FormReactHookForm from './components/FormReactHookForm';
 import FormFormik from './components/FormFormik';
-
-import { getSaludo } from './api/getSaludo';
 
 import './App.css';
 import './components/style.css';
@@ -35,9 +34,17 @@ function App() {
       {path === '/' && (
         <>
           <h1>Estudio de Formularios</h1>
-          <button onClick={() => goTo('/form-basico')}>Formulario Básico</button>
-          <button onClick={() => goTo('/form-hook-form')}>Formulario React Hook Form</button>
-          <button onClick={() => goTo('/formik')}>Formulario Formik</button>
+          <div className='btn-group'>
+            <button className='btn-form' onClick={() => goTo('/form-basico')}>
+              Formulario Básico
+            </button>
+            <button className='btn-form' onClick={() => goTo('/form-hook-form')}>
+              Formulario React Hook Form
+            </button>
+            <button className='btn-form' onClick={() => goTo('/formik')}>
+              Formulario Formik
+            </button>
+          </div>
         </>
       )}
 
