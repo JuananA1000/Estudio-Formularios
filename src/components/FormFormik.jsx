@@ -12,20 +12,16 @@ const FormFormik = () => {
       accept: false,
     },
 
-    validate: (values) => {
-      const errors = {};
-
-      if (!values.nombre) {
-        errors.nombre = 'El nombre es obligatorio';
-      }
-      if (!values.accept) {
-        errors.accept = 'Debes aceptar los términos';
-      }
-      return errors;
-    },
-
     onSubmit: async (values) => {
       const saludo = await getSaludo(values.nombre);
+
+      if (!values.nombre || !values.accept) {
+        formik.setErrors({
+          nombre: !values.nombre ? 'El nombre es obligatorio' : undefined,
+          accept: !values.accept ? 'Debes aceptar los términos' : undefined,
+        });
+        return;
+      }
 
       try {
         sessionStorage.setItem('saludo', saludo);
@@ -36,8 +32,6 @@ const FormFormik = () => {
       window.dispatchEvent(new PopStateEvent('popstate'));
 
       formik.resetForm(); // Resetear formulario
-
-      console.log('Formulario FORMIK enviado:', values);
     },
   });
 
