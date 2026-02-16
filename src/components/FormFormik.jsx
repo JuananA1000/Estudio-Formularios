@@ -3,7 +3,7 @@ import { getSaludo } from '../api/getSaludo';
 
 import './style.css';
 
-const FormFormik = () => {
+export default function FormFormik() {
   const formik = useFormik({
     initialValues: {
       nombre: '',
@@ -66,6 +66,4 @@ const FormFormik = () => {
       </form>
     </div>
   );
-};
-
-export default FormFormik;
+}

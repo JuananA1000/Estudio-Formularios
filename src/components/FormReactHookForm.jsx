@@ -3,7 +3,7 @@ import { getSaludo } from '../api/getSaludo';
 
 import './style.css';
 
-const FormReactHookForm = () => {
+export default function FormReactHookForm() {
   const {
     register,
     handleSubmit,
@@ -58,6 +58,4 @@ const FormReactHookForm = () => {
       </form>
     </div>
   );
-};
-
-export default FormReactHookForm;
+}

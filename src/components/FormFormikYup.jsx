@@ -9,7 +9,7 @@ const validacionYUP = Yup.object().shape({
   accept: Yup.boolean().oneOf([true], 'Debes aceptar los términos'),
 });
 
-const FormFormikYup = () => {
+export default function FormFormikYup() {
   const formik = useFormik({
     initialValues: {
       nombre: '',
@@ -65,6 +65,4 @@ const FormFormikYup = () => {
       </form>
     </div>
   );
-};
-
-export default FormFormikYup;
+}

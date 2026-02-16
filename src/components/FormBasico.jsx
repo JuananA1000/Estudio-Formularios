@@ -3,7 +3,7 @@ import { getSaludo } from '../api/getSaludo';
 
 import './style.css';
 
-const FormBasico = () => {
+export default function FormBasico() {
   const [form, setForm] = useState({ nombre: '', email: '', aceptar: false });
   const [error, setError] = useState(false);
 
@@ -73,6 +73,4 @@ const FormBasico = () => {
       </form>
     </div>
   );
-};
-
-export default FormBasico;
+}
