@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import FormBasico from './components/FormBasico';
 import FormReactHookForm from './components/FormReactHookForm';
 import FormFormik from './components/FormFormik';
+import FormFormikYup from './components/FormFormikYup';
 
 import './App.css';
 import './components/style.css';
@@ -44,6 +45,9 @@ function App() {
             <button className='btn-form' onClick={() => goTo('/formik')}>
               Formulario Formik
             </button>
+            <button className='btn-form' onClick={() => goTo('/formik-yup')}>
+              Formulario Formik con Yup
+            </button>
           </div>
         </>
       )}
@@ -78,6 +82,15 @@ function App() {
       {path === '/formik' && (
         <>
           <FormFormik />
+          <button onClick={() => goTo('/')} className='btn-back'>
+            Volver
+          </button>
+        </>
+      )}
+
+      {path === '/formik-yup' && (
+        <>
+          <FormFormikYup />
           <button onClick={() => goTo('/')} className='btn-back'>
             Volver
           </button>
