@@ -29,6 +29,12 @@ Uso de la librería React Hook Form, centrada en:
 
 Es una solución moderna y muy utilizada en proyectos reales.
 
+Para instalar la librería React Hook Form, utilizaremos el comando:
+
+```bash
+npm i react-hook-form
+```
+
 ### 3. Formik
 
 Uso de Formik, una librería más clásica y ampliamente conocida, que ofrece:
@@ -38,6 +44,22 @@ Uso de Formik, una librería más clásica y ampliamente conocida, que ofrece:
 - Buen soporte para formularios complejos
 
 Permite comparar un enfoque más declarativo frente a React Hook Form.
+
+Para instalar la librería formik, utilizaremos el comando
+
+```bash
+npm i formik
+```
+
+#### 3.1. Yup
+
+Junto con formik, también utilizaremos Yup para **validación de formularios** de forma declarativa y estructurada. Instalaremos esta librería con el comando:
+
+```bash
+npm i yup
+```
+
+Yup permite definir un esquema de validación para un objeto (por ejemplo, los datos de un formulario) y luego validar ese objeto contra ese esquema.
 
 ## Comparación y aprendizajes
 
