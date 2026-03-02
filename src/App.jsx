@@ -4,6 +4,7 @@ import FormBasico from './components/FormBasico';
 import FormReactHookForm from './components/FormReactHookForm';
 import FormFormik from './components/FormFormik';
 import FormFormikYup from './components/FormFormikYup';
+import FormFormikMUI from './components/FormFormikMUI';
 
 import './App.css';
 import './components/style.css';
@@ -48,6 +49,9 @@ function App() {
             <button className='btn-form' onClick={() => goTo('/formik-yup')}>
               Formulario Formik con Yup
             </button>
+            <button className='btn-form' onClick={() => goTo('/formik-mui')}>
+              Formulario Formik con Material UI
+            </button>
           </div>
         </>
       )}
@@ -91,6 +95,15 @@ function App() {
       {path === '/formik-yup' && (
         <>
           <FormFormikYup />
+          <button onClick={() => goTo('/')} className='btn-back'>
+            Volver
+          </button>
+        </>
+      )}
+
+      {path === '/formik-mui' && (
+        <>
+          <FormFormikMUI />
           <button onClick={() => goTo('/')} className='btn-back'>
             Volver
           </button>
